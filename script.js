@@ -1,14 +1,14 @@
 const items = [
-    { id: '1', text: 'Finches', category: 'natural', img: 'https://placehold.co/100x100/3498db/white?text=Finch' },
-    { id: '2', text: 'Racehorses', category: 'selective', img: 'https://placehold.co/100x100/e67e22/white?text=Horse' },
-    { id: '3', text: 'Bacteria', category: 'natural', img: 'https://placehold.co/100x100/3498db/white?text=Germs' },
-    { id: '4', text: 'Pet Dogs', category: 'selective', img: 'https://placehold.co/100x100/e67e22/white?text=Dog' },
-    { id: '5', text: 'Peacock', category: 'natural', img: 'https://placehold.co/100x100/3498db/white?text=Peacock' },
-    { id: '6', text: 'Giant Corn', category: 'selective', img: 'https://placehold.co/100x100/e67e22/white?text=Corn' },
-    { id: '7', text: 'Dark Moths', category: 'natural', img: 'https://placehold.co/100x100/3498db/white?text=Moth' },
-    { id: '8', text: 'Broccoli', category: 'selective', img: 'https://placehold.co/100x100/e67e22/white?text=Broccoli' },
-    { id: '9', text: 'Giraffes', category: 'natural', img: 'https://placehold.co/100x100/3498db/white?text=Giraffe' },
-    { id: '10', text: 'Dairy Cow', category: 'selective', img: 'https://placehold.co/100x100/e67e22/white?text=Cow' }
+    { id: '1', text: 'Finches', category: 'natural', img: './img/finches.webp' },
+    { id: '2', text: 'Racehorses', category: 'selective', img: './img/racehorse.jpg' },
+    { id: '3', text: 'Bacteria', category: 'natural', img: './img/bacteria.jpg' },
+    { id: '4', text: 'Pet Dogs', category: 'selective', img: './img/petdog.jpg' },
+    { id: '5', text: 'Peacock', category: 'natural', img: './img/Peacock.jpg' },
+    { id: '6', text: 'Giant Corn', category: 'selective', img: './img/giantcorn.jpg' },
+    { id: '7', text: 'Dark Moths', category: 'natural', img: './img/darkmoths.webp' },
+    { id: '8', text: 'Broccoli', category: 'selective', img: './img/Broccoli.webp' },
+    { id: '9', text: 'Giraffes', category: 'natural', img: './img/giraffe.webp' },
+    { id: '10', text: 'Dairy Cow', category: 'selective', img: './img/cow.webp' }
 ];
 
 let timeLeft = 180;
