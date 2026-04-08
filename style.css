@@ -1,6 +1,6 @@
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #ecf0f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,17 +10,17 @@ body {
 
 .game-container {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 900px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 95%;
+    max-width: 1000px;
     text-align: center;
 }
 
 #timer-container {
-    font-size: 1.8rem;
-    color: #e67e22;
+    font-size: 1.5rem;
+    color: #d35400;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -33,88 +33,70 @@ body {
 
 .drop-zone {
     flex: 1;
-    min-height: 250px;
-    border: 3px dashed #bdc3c7;
-    border-radius: 12px;
-    background: #f9f9f9;
-    padding: 15px;
-    transition: all 0.3s ease;
+    min-height: 280px;
+    border: 3px dashed #cbd5e0;
+    border-radius: 15px;
+    background: #f8fafc;
+    padding: 20px;
+    transition: background 0.3s;
 }
 
 .drop-zone h2 {
-    margin-top: 0;
-    color: #2980b9;
+    color: #2d3748;
+    font-size: 1.2rem;
 }
 
-.item-bank {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    padding: 20px;
-    background: #dfe6e9;
-    border-radius: 10px;
-    min-height: 80px;
-}
-
-.draggable-item {
-    background: #2c3e50;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: grab;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.draggable-item {
-    background: #2c3e50;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: grab;
-    display: flex;
-    flex-direction: column; /* Puts image on top of text */
-    align-items: center;
-    width: 100px; /* Fixed width for a grid look */
-    font-size: 0.8rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.draggable-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    pointer-events: none; /* Prevents dragging the image instead of the box */
-}
-
-/* Adjust the item bank to handle the bigger boxes */
 .item-bank {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
-    padding: 20px;
-    background: #dfe6e9;
+    padding: 25px;
+    background: #edf2f7;
+    border-radius: 15px;
+    min-height: 120px;
+}
+
+.draggable-item {
+    background: #2d3748;
+    color: white;
+    padding: 10px;
     border-radius: 10px;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.draggable-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    pointer-events: none;
+    background: #eee;
 }
 
 #feedback {
     height: 40px;
-    margin: 20px 0;
+    margin-top: 20px;
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .reset-btn {
-    background: #27ae60;
+    background: #38a169;
     color: white;
     border: none;
-    padding: 12px 30px;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .disabled {
