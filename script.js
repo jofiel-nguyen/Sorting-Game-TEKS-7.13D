@@ -1,37 +1,25 @@
 const items = [
-    // --- Original Items ---
-    { id: '1', text: 'Galapagos Finches', category: 'natural' },
-    { id: '2', text: 'Thoroughbred Racehorses', category: 'selective' },
-    { id: '3', text: 'Bacteria developing resistance', category: 'natural' },
-    { id: '4', text: 'Domesticated Dogs', category: 'selective' },
-    { id: '5', text: 'Peacock tail feathers', category: 'natural' },
-    { id: '6', text: 'Large-kernel sweet corn', category: 'selective' },
-    { id: '7', text: 'Camouflage in Peppered Moths', category: 'natural' },
-    { id: '8', text: 'Broccoli (from wild mustard)', category: 'selective' },
-
-    // --- New Natural Selection Items ---
-    { id: '9', text: 'Insects resistant to pesticides', category: 'natural' },
-    { id: '10', text: 'Longer necks in giraffes', category: 'natural' },
-    { id: '11', text: 'Arctic fox white winter fur', category: 'natural' },
-    { id: '12', text: 'Cactus spines for protection', category: 'natural' },
-    { id: '13', text: 'Poisonous skin in dart frogs', category: 'natural' },
-    { id: '14', text: 'Faster running speeds in cheetahs', category: 'natural' },
-
-    // --- New Selective Breeding Items ---
-    { id: '15', text: 'Chickens bred for more meat', category: 'selective' },
-    { id: '16', text: 'Drought-resistant wheat crops', category: 'selective' },
-    { id: '17', text: 'Teacup Persian cats', category: 'selective' },
-    { id: '18', text: 'Cows that produce more milk', category: 'selective' },
-    { id: '19', text: 'Goldfish with double tails', category: 'selective' },
-    { id: '20', text: 'Seedless watermelons', category: 'selective' }
+    { id: '1', text: 'Galapagos Finches', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/3035/3035134.png' },
+    { id: '2', text: 'Racehorses', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/3132/3132644.png' },
+    { id: '3', text: 'Resistant Bacteria', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/2913/2913501.png' },
+    { id: '4', text: 'Domesticated Dogs', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/616/616408.png' },
+    { id: '5', text: 'Peacock Feathers', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/2623/2623783.png' },
+    { id: '6', text: 'Large-kernel Corn', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/1155/1155250.png' },
+    { id: '7', text: 'Peppered Moths', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/450/450702.png' },
+    { id: '8', text: 'Broccoli', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/2346/2346927.png' },
+    { id: '9', text: 'Pesticide Resistance', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/3248/3248381.png' },
+    { id: '10', text: 'Giraffe Necks', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/1864/1864475.png' },
+    { id: '11', text: 'Arctic Fox Fur', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/10542/10542369.png' },
+    { id: '12', text: 'Cactus Spines', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/136/136693.png' },
+    { id: '13', text: 'Poison Dart Frogs', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/11499/11499003.png' },
+    { id: '14', text: 'Fast Cheetahs', category: 'natural', img: 'https://cdn-icons-png.flaticon.com/512/2330/2330691.png' },
+    { id: '15', text: 'Meatier Chickens', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/2951/2951119.png' },
+    { id: '16', text: 'Hardy Wheat', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/4836/4836693.png' },
+    { id: '17', text: 'Persian Cats', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/616/616430.png' },
+    { id: '18', text: 'High-milk Cows', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/2395/2395796.png' },
+    { id: '19', text: 'Fancy Goldfish', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/2261/2261621.png' },
+    { id: '20', text: 'Seedless Melons', category: 'selective', img: 'https://cdn-icons-png.flaticon.com/512/3361/3361545.png' }
 ];
-let timeLeft = 180;
-let timerInterval;
-let gameStarted = false;
-
-const timerDisplay = document.getElementById('timer');
-const itemBank = document.getElementById('item-bank');
-const feedback = document.getElementById('feedback');
 
 function initGame() {
     itemBank.innerHTML = '';
@@ -41,69 +29,14 @@ function initGame() {
         const div = document.createElement('div');
         div.className = 'draggable-item';
         div.draggable = true;
-        div.innerText = item.text;
+        // This adds the image and the text inside the draggable box
+        div.innerHTML = `
+            <img src="${item.img}" style="width:40px;height:40px;pointer-events:none;margin-bottom:5px;">
+            <br>
+            <span>${item.text}</span>
+        `;
         div.id = item.id;
         div.ondragstart = drag;
         itemBank.appendChild(div);
     });
 }
-
-function startTimer() {
-    if (gameStarted) return;
-    gameStarted = true;
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        const mins = Math.floor(timeLeft / 60);
-        const secs = timeLeft % 60;
-        timerDisplay.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        if (timeLeft <= 0) endGame(false);
-    }, 1000);
-}
-
-function allowDrop(ev) { ev.preventDefault(); }
-
-function drag(ev) {
-    startTimer(); // Start clock on first interaction
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const draggedElement = document.getElementById(data);
-    const dropTarget = ev.target.closest('.drop-zone');
-
-    if (dropTarget) {
-        const itemData = items.find(i => i.id === data);
-        if (dropTarget.id === itemData.category) {
-            dropTarget.appendChild(draggedElement);
-            feedback.innerText = "✅ Correct!";
-            feedback.style.color = "#27ae60";
-            checkWin();
-        } else {
-            feedback.innerText = "❌ Try again! That isn't right.";
-            feedback.style.color = "#e74c3c";
-        }
-    }
-}
-
-function checkWin() {
-    if (itemBank.children.length === 0) endGame(true);
-}
-
-function endGame(isWin) {
-    clearInterval(timerInterval);
-    itemBank.classList.add('disabled');
-    if (isWin) {
-        feedback.innerText = "🏆 Mastery Achieved! All sorted correctly.";
-        feedback.style.color = "#27ae60";
-    } else {
-        feedback.innerText = "⏰ Time is up! Review the remaining items.";
-        feedback.style.color = "#c0392b";
-        timerDisplay.innerText = "0:00";
-    }
-}
-
-function resetGame() { location.reload(); }
-
-initGame();
