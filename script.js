@@ -1,21 +1,25 @@
 const items = [
     { id: '1', text: 'Galapagos Finches', category: 'natural' },
-    { id: '2', text: 'Dog Breeds', category: 'selective' },
-    { id: '3', text: 'Pesticide Resistance', category: 'natural' },
-    { id: '4', text: 'Prize-winning Cattle', category: 'selective' },
-    { id: '5', text: 'Bright colors for mating', category: 'natural' },
-    { id: '6', text: 'Corn with larger kernels', category: 'selective' }
+    { id: '2', text: 'Thoroughbred Racehorses', category: 'selective' },
+    { id: '3', text: 'Bacteria developing resistance', category: 'natural' },
+    { id: '4', text: 'Domesticated Dogs', category: 'selective' },
+    { id: '5', text: 'Peacock tail feathers', category: 'natural' },
+    { id: '6', text: 'Large-kernel sweet corn', category: 'selective' },
+    { id: '7', text: 'Camouflage in Peppered Moths', category: 'natural' },
+    { id: '8', text: 'Broccoli (from wild mustard)', category: 'selective' }
 ];
 
-let timeLeft = 180; // 3 minutes in seconds
+let timeLeft = 180;
 let timerInterval;
+let gameStarted = false;
+
 const timerDisplay = document.getElementById('timer');
 const itemBank = document.getElementById('item-bank');
 const feedback = document.getElementById('feedback');
 
 function initGame() {
     itemBank.innerHTML = '';
-    const shuffled = items.sort(() => Math.random() - 0.5);
+    const shuffled = [...items].sort(() => Math.random() - 0.5);
     
     shuffled.forEach(item => {
         const div = document.createElement('div');
@@ -26,30 +30,24 @@ function initGame() {
         div.ondragstart = drag;
         itemBank.appendChild(div);
     });
-
-    startTimer();
 }
 
 function startTimer() {
+    if (gameStarted) return;
+    gameStarted = true;
     timerInterval = setInterval(() => {
         timeLeft--;
-        
-        // Format time as MM:SS
         const mins = Math.floor(timeLeft / 60);
         const secs = timeLeft % 60;
         timerDisplay.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-
-        if (timeLeft <= 0) {
-            endGame(false);
-        }
+        if (timeLeft <= 0) endGame(false);
     }, 1000);
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
+function allowDrop(ev) { ev.preventDefault(); }
 
 function drag(ev) {
+    startTimer(); // Start clock on first interaction
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
@@ -61,41 +59,35 @@ function drop(ev) {
 
     if (dropTarget) {
         const itemData = items.find(i => i.id === data);
-        
         if (dropTarget.id === itemData.category) {
             dropTarget.appendChild(draggedElement);
-            feedback.innerText = "Correct!";
-            feedback.style.color = "green";
+            feedback.innerText = "✅ Correct!";
+            feedback.style.color = "#27ae60";
             checkWin();
         } else {
-            feedback.innerText = "Try again!";
-            feedback.style.color = "red";
+            feedback.innerText = "❌ Try again! That isn't right.";
+            feedback.style.color = "#e74c3c";
         }
     }
 }
 
 function checkWin() {
-    if (itemBank.children.length === 0) {
-        endGame(true);
-    }
+    if (itemBank.children.length === 0) endGame(true);
 }
 
 function endGame(isWin) {
-    clearInterval(timerInterval); // Stop the clock
-    itemBank.classList.add('disabled'); // Stop dragging
-    
+    clearInterval(timerInterval);
+    itemBank.classList.add('disabled');
     if (isWin) {
-        feedback.innerText = "Success! You finished before time ran out!";
-        feedback.className = "game-over-text";
+        feedback.innerText = "🏆 Mastery Achieved! All sorted correctly.";
+        feedback.style.color = "#27ae60";
     } else {
-        feedback.innerText = "Time's up! Let's review the answers.";
-        feedback.className = "game-over-text";
+        feedback.innerText = "⏰ Time is up! Review the remaining items.";
+        feedback.style.color = "#c0392b";
         timerDisplay.innerText = "0:00";
     }
 }
 
-function resetGame() {
-    location.reload();
-}
+function resetGame() { location.reload(); }
 
 initGame();
