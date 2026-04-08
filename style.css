@@ -67,7 +67,38 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.draggable-item:active { cursor: grabbing; }
+.draggable-item {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: grab;
+    display: flex;
+    flex-direction: column; /* Puts image on top of text */
+    align-items: center;
+    width: 100px; /* Fixed width for a grid look */
+    font-size: 0.8rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.draggable-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    pointer-events: none; /* Prevents dragging the image instead of the box */
+}
+
+/* Adjust the item bank to handle the bigger boxes */
+.item-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    background: #dfe6e9;
+    border-radius: 10px;
+}
 
 #feedback {
     height: 40px;
