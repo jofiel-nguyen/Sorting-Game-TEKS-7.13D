@@ -9,8 +9,12 @@
 <body>
 
     <div class="game-container">
-        <h1>Natural Selection vs. Selective Breeding</h1>
-        <p>Drag each trait to the correct category!</p>
+        <h1>Selection Sorting Challenge</h1>
+        <p>TEKS 7.13D: Differentiate between Natural and Selective Breeding</p>
+
+        <div id="timer-container">
+            Time Remaining: <span id="timer">03:00</span>
+        </div>
 
         <div class="sorting-area">
             <div class="drop-zone" id="natural" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -24,12 +28,9 @@
 
         <div id="item-bank" class="item-bank">
             </div>
-            <div id="timer-container">
-        Time Remaining: <span id="timer">03:00</span>
-            </div>
 
-        <div id="feedback"></div>
-        <button onclick="resetGame()">Reset Game</button>
+        <div id="feedback">Drag an item to start!</div>
+        <button class="reset-btn" onclick="resetGame()">Restart Game</button>
     </div>
 
     <script src="script.js"></script>
