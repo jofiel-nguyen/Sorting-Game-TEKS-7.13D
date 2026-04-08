@@ -1,4 +1,5 @@
 const items = [
+    // --- Original Items ---
     { id: '1', text: 'Galapagos Finches', category: 'natural' },
     { id: '2', text: 'Thoroughbred Racehorses', category: 'selective' },
     { id: '3', text: 'Bacteria developing resistance', category: 'natural' },
@@ -6,9 +7,24 @@ const items = [
     { id: '5', text: 'Peacock tail feathers', category: 'natural' },
     { id: '6', text: 'Large-kernel sweet corn', category: 'selective' },
     { id: '7', text: 'Camouflage in Peppered Moths', category: 'natural' },
-    { id: '8', text: 'Broccoli (from wild mustard)', category: 'selective' }
-];
+    { id: '8', text: 'Broccoli (from wild mustard)', category: 'selective' },
 
+    // --- New Natural Selection Items ---
+    { id: '9', text: 'Insects resistant to pesticides', category: 'natural' },
+    { id: '10', text: 'Longer necks in giraffes', category: 'natural' },
+    { id: '11', text: 'Arctic fox white winter fur', category: 'natural' },
+    { id: '12', text: 'Cactus spines for protection', category: 'natural' },
+    { id: '13', text: 'Poisonous skin in dart frogs', category: 'natural' },
+    { id: '14', text: 'Faster running speeds in cheetahs', category: 'natural' },
+
+    // --- New Selective Breeding Items ---
+    { id: '15', text: 'Chickens bred for more meat', category: 'selective' },
+    { id: '16', text: 'Drought-resistant wheat crops', category: 'selective' },
+    { id: '17', text: 'Teacup Persian cats', category: 'selective' },
+    { id: '18', text: 'Cows that produce more milk', category: 'selective' },
+    { id: '19', text: 'Goldfish with double tails', category: 'selective' },
+    { id: '20', text: 'Seedless watermelons', category: 'selective' }
+];
 let timeLeft = 180;
 let timerInterval;
 let gameStarted = false;
