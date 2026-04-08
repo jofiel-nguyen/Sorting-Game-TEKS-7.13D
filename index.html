@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEKS 7.13D Sorting Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Natural Selection vs. Selective Breeding</h1>
+        <p>Drag each trait to the correct category!</p>
+
+        <div class="sorting-area">
+            <div class="drop-zone" id="natural" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>Natural Selection</h2>
+            </div>
+            
+            <div class="drop-zone" id="selective" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>Selective Breeding</h2>
+            </div>
+        </div>
+
+        <div id="item-bank" class="item-bank">
+            </div>
+
+        <div id="feedback"></div>
+        <button onclick="resetGame()">Reset Game</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
